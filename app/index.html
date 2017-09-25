@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RQX Token ICO DApp</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="./app.js"></script>
+</head>
+<body>
+  <a href="index.html"><h1>RQX Token ICO DApp</h1></a>
+  <div  style="float:right">
+    <span style="color:#ffffff"></span> <span id="currentUserName"></span>
+  </div>
+  <div class="row">
+				<div id="tokenDetail" style="margin-top:5%;width:50%;float:left;display:none">
+          <br><label for="tokenName">Name:</label><input type="text" id="tokenName" readonly="readonly"></input>
+          <br><label for="tokenSymbol">Symbol:</label><input type="text" id="tokenSymbol" readonly="readonly"></input>
+          <br><label for="preICOstartTime">Pre-ICO Start Date:</label><input type="text" id="preICOstartTime" readonly="readonly"></input>
+          <br><label for="preICOendTime">Pre-ICO End Date:</label><input type="text" id="preICOendTime" readonly="readonly"></input>
+          <br><label for="startTime">ICO Start Date:</label><input type="text" id="startTime" readonly="readonly"></input>
+          <br><label for="endTime">ICO End Date:</label><input type="text" id="endTime" readonly="readonly"></input>
+          <br><label for="totalSupply">Total Supply:</label><input type="number" id="totalSupply" readonly="readonly"></input>
+          <br><label for="icoSupply">ICO Supply:</label><input type="number" id="icoSupply" readonly="readonly"></input>
+          <br><label for="distributionSupply">Distribution Supply:</label><input type="number" id="distributionSupply" readonly="readonly"></input>
+          <br><br>
+          <div style="text-align:center;display:none" id="onlyOwnerAction">
+            <button id="updateDateBtn" onclick="App.showUpdateDateScreen()">Change ICO Date</button> <button style="" id="updateDistributionBtn" onclick="App.showDistributionSupplyScreen()">Change Distribution Supply</button>
+          </div>
+      </div>
+      <div id="updateDate" style="margin-top:5%;width:50%;float:right;display:none">
+        <h3>Update ICO Date</h3>
+        <br><label for="upreICOstartTime">Pre-ICO Start Date:</label><input type="datetime-local" id="upreICOstartTime"></input>
+        <br><label for="upreICOendTime">Pre-ICO End Date:</label><input type="datetime-local" id="upreICOendTime"></input>
+        <br><label for="ustartTime">ICO Start Date:</label><input type="datetime-local" id="ustartTime"></input>
+        <br><label for="uendTime">ICO End Date:</label><input type="datetime-local" id="uendTime"></input>
+        <br><br>
+        <div style="text-align:center">
+          <button id="btnUpdateDate" onclick="App.updateICODate()">Update</button> <button style="background-color: gray;" id="close" onclick="App.hideUpdateDateScreen()">Close</button>
+        </div>
+    </div>
+    <div id="updateDistribution" style="margin-top:5%;width:50%;float:right;display:none;">
+        <h3>Update Distribution Supply</h3>
+        <br><label for="totalDistributionSupply">Total Distribution Supply:</label><input type="number" id="totalDistributionSupply" disabled="disabled" style="background-color: #c6e8c0;"></input>
+        <br><label for="partnershipSupply">Partnership and Advisors:</label><input type="number" id="partnershipSupply"></input>
+        <br><label for="stackholderSupply">Stackeholder:</label><input type="number" id="stackholderSupply"></input>
+        <br><label for="bountiesSupply">Bounties:</label><input type="number" id="bountiesSupply"></input>
+        <br><label for="coreTeamSupply">Requitix core Team:</label><input type="number" id="coreTeamSupply"></input>
+        <br><br>
+        <div style="text-align:center">
+          <button id="btnUpdateDistribution" onclick="App.updateDistributionSupply()">Update</button> <button style="background-color: gray;" id="close" onclick="App.hideDistributionSupplyScreen()">Close</button>
+        </div>
+    </div>
+  </div>
+  <br />
+  <span id="status"></span>
+  <br>
+</body>
+</html>
