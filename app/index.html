@@ -25,9 +25,65 @@
           <br><label for="distributionSupply">Distribution Supply:</label><input type="number" id="distributionSupply" readonly="readonly"></input>
           <br><br>
           <div style="text-align:center;display:none" id="onlyOwnerAction">
-            <button id="updateDateBtn" onclick="App.showUpdateDateScreen()">Change ICO Date</button> <button style="" id="updateDistributionBtn" onclick="App.showDistributionSupplyScreen()">Change Distribution Supply</button>
+            <button id="updateDateBtn" onclick="App.showUpdateDateScreen()">Change ICO Date</button>
+            <button style="" id="updateDistributionBtn" onclick="App.showDistributionSupplyScreen()">Change Distribution Supply</button>
+            <br><br>
+            <div>
+              <button onclick="App.showSendPartnershipAndAdvisorsTokenScreen()" style="background-color: #359c00;">Send Partnership and Advisors Token</button>
+              <button onclick="App.showSendResearchedForFuturedStackeholderTokenScreen()" style="background-color: #359c00;">Send Researched for futured Stackeholder Token</button>
+              <br><br>
+              <button onclick="App.showSendBountiesTokenScreen()" style="background-color: #359c00;">Send Bounties Token</button>
+              <button onclick="App.showSendRequitixCoreTeamTokenScreen()" style="background-color: #359c00;">Send Requitix core team Token</button>
+
+            </div>
           </div>
+
       </div>
+
+      <div id="partnershipAndAdvisorsTokenScreen" style="margin-top:5%;width:50%;float:right;display:none">
+        <h3>Send Partnership and Advisors Token</h3>
+        <br><label for="balance1">Current Balance:</label><input type="number" id="balance1" disabled="disabled" style="background-color: #c6e8c0;"></input>
+        <br><label for="toAddress1">Address:</label><input type="text" id="toAddress1" required placeholder="to address: e.g. 0x123456..."></input>
+        <br><label for="toAddress1">Token Amount:</label><input type="number" id="sendAmount1" required placeholder="amount: e.g. 10"></input>
+        <br><br>
+        <div style="text-align:center">
+          <button onclick="App.transferPartnershipAndAdvisorsToken()" id="transferButton1">Transfer</button> <button style="background-color: gray;" id="close" onclick="App.hideSendPartnershipAndAdvisorsTokenScreen()">Close</button>
+        </div>
+      </div>
+
+      <div id="researchedForFuturedStackeholderTokenScreen" style="margin-top:5%;width:50%;float:right;display:none">
+        <h3>Send Researched for futured Stackeholder Token</h3>
+        <br><label for="balance2">Current Balance:</label><input type="number" id="balance2" disabled="disabled" style="background-color: #c6e8c0;"></input>
+        <br><label for="toAddress2">Address:</label><input type="text" id="toAddress2" required placeholder="to address: e.g. 0x123456..."></input>
+        <br><label for="toAddress2">Token Amount:</label><input type="number" id="sendAmount2" required placeholder="amount: e.g. 10"></input>
+        <br><br>
+        <div style="text-align:center">
+          <button onclick="App.transferResearchedForFuturedStackeholderToken()" id="transferButton2">Transfer</button> <button style="background-color: gray;" id="close" onclick="App.hideSendResearchedForFuturedStackeholderTokenScreen()">Close</button>
+        </div>
+      </div>
+
+      <div id="bountiesTokenScreen" style="margin-top:5%;width:50%;float:right;display:none">
+        <h3>Send Bounties Token</h3>
+        <br><label for="balance3">Current Balance:</label><input type="number" id="balance3" disabled="disabled" style="background-color: #c6e8c0;"></input>
+        <br><label for="toAddress3">Address:</label><input type="text" id="toAddress3" required placeholder="to address: e.g. 0x123456..."></input>
+        <br><label for="toAddress3">Token Amount:</label><input type="number" id="sendAmount3" required placeholder="amount: e.g. 10"></input>
+        <br><br>
+        <div style="text-align:center">
+          <button onclick="App.transferBountiesToken()" id="transferButton3">Transfer</button> <button style="background-color: gray;" id="close" onclick="App.hideSendBountiesTokenScreen()">Close</button>
+        </div>
+      </div>
+
+      <div id="requitixCoreTeamTokenScreen" style="margin-top:5%;width:50%;float:right;display:none">
+        <h3>Send Requitix core Team Token</h3>
+        <br><label for="balance4">Current Balance:</label><input type="number" id="balance4" disabled="disabled" style="background-color: #c6e8c0;"></input>
+        <br><label for="toAddress4">Address:</label><input type="text" id="toAddress4" required placeholder="to address: e.g. 0x123456..."></input>
+        <br><label for="toAddress4">Token Amount:</label><input type="number" id="sendAmount4" required placeholder="amount: e.g. 10"></input>
+        <br><br>
+        <div style="text-align:center">
+          <button onclick="App.transferRequitixCoreTeamToken()" id="transferButton4">Transfer</button> <button style="background-color: gray;" id="close" onclick="App.hideSendRequitixCoreTeamTokenScreen()">Close</button>
+        </div>
+      </div>
+
       <div id="updateDate" style="margin-top:5%;width:50%;float:right;display:none">
         <h3>Update ICO Date</h3>
         <br><label for="upreICOstartTime">Pre-ICO Start Date:</label><input type="datetime-local" id="upreICOstartTime"></input>
@@ -38,8 +94,8 @@
         <div style="text-align:center">
           <button id="btnUpdateDate" onclick="App.updateICODate()">Update</button> <button style="background-color: gray;" id="close" onclick="App.hideUpdateDateScreen()">Close</button>
         </div>
-    </div>
-    <div id="updateDistribution" style="margin-top:5%;width:50%;float:right;display:none;">
+      </div>
+      <div id="updateDistribution" style="margin-top:5%;width:50%;float:right;display:none;">
         <h3>Update Distribution Supply</h3>
         <br><label for="totalDistributionSupply">Total Distribution Supply:</label><input type="number" id="totalDistributionSupply" disabled="disabled" style="background-color: #c6e8c0;"></input>
         <br><label for="partnershipSupply">Partnership and Advisors:</label><input type="number" id="partnershipSupply"></input>
@@ -50,7 +106,7 @@
         <div style="text-align:center">
           <button id="btnUpdateDistribution" onclick="App.updateDistributionSupply()">Update</button> <button style="background-color: gray;" id="close" onclick="App.hideDistributionSupplyScreen()">Close</button>
         </div>
-    </div>
+      </div>
   </div>
   <br />
   <span id="status"></span>

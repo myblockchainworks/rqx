@@ -137,12 +137,208 @@ window.App = {
     });
   },
 
+  hideSendRequitixCoreTeamTokenScreen : function() {
+    $('#requitixCoreTeamTokenScreen').hide();
+  },
+
+  showSendRequitixCoreTeamTokenScreen : function() {
+    $('#updateDate').hide();
+    $('#updateDistribution').hide();
+    $('#partnershipAndAdvisorsTokenScreen').hide();
+    $('#researchedForFuturedStackeholderTokenScreen').hide();
+    var self = this;
+    TQXToken._requitixCoreTeamFundSupply.call(function(err, res) {
+      if (!err) {
+        $('#balance4').val(parseFloat(res) / wei);
+        $('#requitixCoreTeamTokenScreen').show();
+      }
+    });
+  },
+
+  transferRequitixCoreTeamToken : function() {
+    var toAddress = $('#toAddress4').val();
+    var sendAmount = parseInt($('#sendAmount4').val());
+    if (toAddress == '' || toAddress == undefined) {
+      alert ("To address is empty!");
+      return;
+    } else if (isNaN(sendAmount)) {
+      alert ("Amount is empty!");
+      return;
+    }
+    sendAmount = sendAmount * wei;
+    $('#transferButton4').html("Transferring Amount. Awaiting Confirmation!");
+    $('#transferButton4').attr("disabled", true);
+    TQXToken.sendRequitixCoreTeamFundSupplyToken.sendTransaction(toAddress, sendAmount, {from: account}, function(err, result) {
+      if(err) {
+        console.log(err);
+        $('#transferButton4').html("Transfer");
+        $("#transferButton4").removeAttr("disabled");
+      }
+      if(result) {
+        alert ("Successfully Transferred Token!");
+        $('#toAddress4').val("");
+        $('#sendAmount4').val("");
+        $('#transferButton4').html("Transfer");
+        $("#transferButton4").removeAttr("disabled");
+      }
+    });
+  },
+
+  hideSendBountiesTokenScreen : function() {
+    $('#bountiesTokenScreen').hide();
+  },
+
+  showSendBountiesTokenScreen : function() {
+    $('#updateDate').hide();
+    $('#updateDistribution').hide();
+    $('#partnershipAndAdvisorsTokenScreen').hide();
+    $('#researchedForFuturedStackeholderTokenScreen').hide();
+    $('#requitixCoreTeamTokenScreen').hide();
+    var self = this;
+    TQXToken._bounties.call(function(err, res) {
+      if (!err) {
+        $('#balance3').val(parseFloat(res) / wei);
+        $('#bountiesTokenScreen').show();
+      }
+    });
+  },
+
+  transferBountiesToken : function() {
+    var toAddress = $('#toAddress3').val();
+    var sendAmount = parseInt($('#sendAmount3').val());
+    if (toAddress == '' || toAddress == undefined) {
+      alert ("To address is empty!");
+      return;
+    } else if (isNaN(sendAmount)) {
+      alert ("Amount is empty!");
+      return;
+    }
+    sendAmount = sendAmount * wei;
+    $('#transferButton3').html("Transferring Amount. Awaiting Confirmation!");
+    $('#transferButton3').attr("disabled", true);
+    TQXToken.sendBountiesToken.sendTransaction(toAddress, sendAmount, {from: account}, function(err, result) {
+      if(err) {
+        console.log(err);
+        $('#transferButton3').html("Transfer");
+        $("#transferButton3").removeAttr("disabled");
+      }
+      if(result) {
+        alert ("Successfully Transferred Token!");
+        $('#toAddress3').val("");
+        $('#sendAmount3').val("");
+        $('#transferButton3').html("Transfer");
+        $("#transferButton3").removeAttr("disabled");
+      }
+    });
+  },
+
+  hideSendResearchedForFuturedStackeholderTokenScreen : function() {
+    $('#researchedForFuturedStackeholderTokenScreen').hide();
+  },
+
+  showSendResearchedForFuturedStackeholderTokenScreen : function() {
+    $('#updateDate').hide();
+    $('#updateDistribution').hide();
+    $('#partnershipAndAdvisorsTokenScreen').hide();
+    $('#bountiesTokenScreen').hide();
+    $('#requitixCoreTeamTokenScreen').hide();
+    var self = this;
+    TQXToken._researchedForFuturedStackeholderFundSupply.call(function(err, res) {
+      if (!err) {
+        $('#balance2').val(parseFloat(res) / wei);
+        $('#researchedForFuturedStackeholderTokenScreen').show();
+      }
+    });
+  },
+
+  transferResearchedForFuturedStackeholderToken : function() {
+    var toAddress = $('#toAddress2').val();
+    var sendAmount = parseInt($('#sendAmount2').val());
+    if (toAddress == '' || toAddress == undefined) {
+      alert ("To address is empty!");
+      return;
+    } else if (isNaN(sendAmount)) {
+      alert ("Amount is empty!");
+      return;
+    }
+    sendAmount = sendAmount * wei;
+    $('#transferButton2').html("Transferring Amount. Awaiting Confirmation!");
+    $('#transferButton2').attr("disabled", true);
+    TQXToken.sendResearchedForFuturedStackeholderFundSupplyToken.sendTransaction(toAddress, sendAmount, {from: account}, function(err, result) {
+      if(err) {
+        console.log(err);
+        $('#transferButton2').html("Transfer");
+        $("#transferButton2").removeAttr("disabled");
+      }
+      if(result) {
+        alert ("Successfully Transferred Token!");
+        $('#toAddress2').val("");
+        $('#sendAmount2').val("");
+        $('#transferButton2').html("Transfer");
+        $("#transferButton2").removeAttr("disabled");
+      }
+    });
+  },
+
+  hideSendPartnershipAndAdvisorsTokenScreen : function() {
+    $('#partnershipAndAdvisorsTokenScreen').hide();
+  },
+
+  showSendPartnershipAndAdvisorsTokenScreen : function() {
+    $('#updateDate').hide();
+    $('#updateDistribution').hide();
+    $('#researchedForFuturedStackeholderTokenScreen').hide();
+    $('#bountiesTokenScreen').hide();
+    $('#requitixCoreTeamTokenScreen').hide();
+    var self = this;
+    TQXToken._partnershipAndAdvisorsFundSupply.call(function(err, res) {
+      if (!err) {
+        $('#balance1').val(parseFloat(res) / wei);
+        $('#partnershipAndAdvisorsTokenScreen').show();
+      }
+    });
+
+  },
+
+  transferPartnershipAndAdvisorsToken : function() {
+    var toAddress = $('#toAddress1').val();
+    var sendAmount = parseInt($('#sendAmount1').val());
+    if (toAddress == '' || toAddress == undefined) {
+      alert ("To address is empty!");
+      return;
+    } else if (isNaN(sendAmount)) {
+      alert ("Amount is empty!");
+      return;
+    }
+    sendAmount = sendAmount * wei;
+    $('#transferButton1').html("Transferring Amount. Awaiting Confirmation!");
+    $('#transferButton1').attr("disabled", true);
+    TQXToken.sendPartnershipAndAdvisorsFundSupplyToken.sendTransaction(toAddress, sendAmount, {from: account}, function(err, result) {
+      if(err) {
+        console.log(err);
+        $('#transferButton1').html("Transfer");
+        $("#transferButton1").removeAttr("disabled");
+      }
+      if(result) {
+        alert ("Successfully Transferred Token!");
+        $('#toAddress1').val("");
+        $('#sendAmount1').val("");
+        $('#transferButton1').html("Transfer");
+        $("#transferButton1").removeAttr("disabled");
+      }
+    });
+  },
+
   hideUpdateDateScreen : function() {
     $('#updateDate').hide();
   },
   showUpdateDateScreen : function() {
     var self = this;
+    $('#partnershipAndAdvisorsTokenScreen').hide();
     $('#updateDistribution').hide();
+    $('#researchedForFuturedStackeholderTokenScreen').hide();
+    $('#bountiesTokenScreen').hide();
+    $('#requitixCoreTeamTokenScreen').hide();
     $('#upreICOstartTime').val(self.formatEditDate(new Date(parseInt(editPreICOStartDate))));
     $('#upreICOendTime').val(self.formatEditDate(new Date(parseInt(editPreICOEndDate))));
     $('#ustartTime').val(self.formatEditDate(new Date(parseInt(editICOStartDate))));
@@ -208,7 +404,11 @@ window.App = {
   },
 
   showDistributionSupplyScreen : function() {
+    $('#partnershipAndAdvisorsTokenScreen').hide();
     $('#updateDate').hide();
+    $('#researchedForFuturedStackeholderTokenScreen').hide();
+    $('#bountiesTokenScreen').hide();
+    $('#requitixCoreTeamTokenScreen').hide();
     TQXToken.getDistributionSupply.call({from: account}, function(err2, detail2) {
       if(err2) {
         console.log(err2);
